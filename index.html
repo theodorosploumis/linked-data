@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Linked data, RDF, SPARQL and the future</title>
+
+  <meta name="description"
+  content="A presentation about semantics, linked data, RDF, SPARQL and open web">
+  <meta name="author" content="@theoploumis">
+
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+  <meta name="viewport"
+  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/league.css" id="theme">
+
+  <!-- Code syntax highlighting -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+  document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+
+  <!--[if lt IE 9]>
+  <script src="lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+      <section>
+        <h1>wwwL(inked)</h1>
+
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Boundless_Informant_data_collection.svg/480px-Boundless_Informant_data_collection.svg.png">
+
+        <h4>Linked data, RDF, SPARQL and the future</h4>
+
+        <p>
+          <small>Presentation by <a href="http://theodorosploumis.com">TheodorosPloumis</a> / <a href="http://twitter.com/theoploumis">@theoploumis</a></small>
+        </p>
+        <p>
+          <small><a href="http://mydrupal.gr/node/2857">Meetup No 28</a> - 18 Feb 2016 - <a href="http://www.techministry.gr/">TechMinistry</a>.</small>
+        </p>
+        <p>
+          <small>Under <a href="http://creativecommons.org/licenses/by/4.0/">Attribution 4.0 International</a> license.</small>
+        </p>
+      </section>
+
+      <section>
+        <section>
+          <h2>What is Semantic Web</h2>
+          <ul>
+            <li>Humans can understand web content</li>
+            <li>Machines (computers) need some help</li>
+            <li>In a semantic environment Machines can understand the meaning of a thing
+              (document, port, text, system status etc) and link to/from it.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>What do Humans read</h2>
+          <pre>
+            Drupal meetup <a href="#">Thessaloniki</a> will take place
+            in <a href="#">Techministry</a> at <a href="#">Thursday 18 February 2016</a>
+            from <a href="#">20:00 to 22:00</a>.
+          </pre>
+        </section>
+
+        <section>
+          <h2>What do Machines read</h2>
+          <pre>
+            Word word <a href="#">link</a> word word word word <a href="#">link</a>
+            word <a href="#">link</a> word <a href="#">link</a>.
+          </pre>
+        </section>
+
+        <section>
+          <h2>What should Machines read</h2>
+          <pre>
+            Word word <a href="#">Link of a City</a> word word word word <a href="#">Link of a Place</a>
+            word <a href="#">link of a Date</a> word <a href="#">link of a 24h Time</a>.
+          </pre>
+        </section>
+
+      </section><!-- change-page -->
+
+      <section>
+
+        <section>
+          <h2>What is Linked Data</h2>
+          <ul>
+            <li>Really connected web (2009)</li>
+            <li>Internet of Things not only of documents</li>
+            <li>Automatic decisions</li>
+            <li>Find information faster, easier and with <b>accuracy</b></li>
+            <li>The basic 'engine' behind Big Data</li>
+            <li>The key for Open Government/Cities/Health/...</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>The 5th star of the Open Data</h2>
+          <img src="http://5stardata.info/images/5-star-steps.png" title="The 5 star open data">
+        </section>
+        <aside class="notes">
+★ make your stuff available on the Web (whatever format) under an open license
+★★ make it available as structured data (e.g., Excel instead of image scan of a table)
+★★★ make it available in a non-proprietary open format (e.g., CSV as well as of Excel)
+★★★★ use URIs to denote things, so that people can point at your stuff
+★★★★★ link your data to other data to provide context
+        </aside>
+
+      </section><!-- change-page -->
+
+      <section>
+        <h2>RDF (Statements, R,D,F,URI), Schemas, Graphs, Triples, Endpoints</h2>
+        Several common formats.
+        <ul>
+          <li>One (non-Windows) machine</li>
+          <li>OpenSSH</li>
+          <li>YAML</li>
+          <li>Python (paramiko, PyYAML, Jinja2, httplib2)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Ontologies (vocabularies, classes, relationships, rdf/owl)</h2>
+        <ul>
+          <li>One (non-Windows) machine</li>
+          <li>OpenSSH</li>
+          <li>YAML</li>
+          <li>Python (paramiko, PyYAML, Jinja2, httplib2)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Linked Data resources</h2>
+        <ul>
+          <li>One (non-Windows) machine</li>
+          <li>OpenSSH</li>
+          <li>YAML</li>
+          <li>Python (paramiko, PyYAML, Jinja2, httplib2)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Producing Linked Data</h2>
+        <ul>
+          <li>One (non-Windows) machine</li>
+          <li>OpenSSH</li>
+          <li>YAML</li>
+          <li>Python (paramiko, PyYAML, Jinja2, httplib2)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Consuming Linked Data</h2>
+        <ul>
+          <li>One (non-Windows) machine</li>
+          <li>OpenSSH</li>
+          <li>YAML</li>
+          <li>Python (paramiko, PyYAML, Jinja2, httplib2)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>The SPARQL language, examples, syntax</h2>
+        <ul>
+          <li>One (non-Windows) machine</li>
+          <li>OpenSSH</li>
+          <li>YAML</li>
+          <li>Python (paramiko, PyYAML, Jinja2, httplib2)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Linked data APIs vs RDF (json-ld etc)</h2>
+        <ul>
+          <li>One (non-Windows) machine</li>
+          <li>OpenSSH</li>
+          <li>YAML</li>
+          <li>Python (paramiko, PyYAML, Jinja2, httplib2)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Business with Open and Linked data</h2>
+        <ul>
+          <li>One (non-Windows) machine</li>
+          <li>OpenSSH</li>
+          <li>YAML</li>
+          <li>Python (paramiko, PyYAML, Jinja2, httplib2)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>The problems of Linked Data</h2>
+        <ul>
+          <li>Which schema and ontology to use</li>
+          <li>How to connect (specification)</li>
+          <li>Need for powerful machines</li>
+          <li>Hard for developers to understand</li>
+          <li>Confusion of standarization from the w3c</li>
+          <li>Missing metadata for the datasets</li>
+          <li>Quality and accuracy of the data</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Big Data and the future</h2>
+        <ul>
+          <li>One (non-Windows) machine</li>
+          <li>OpenSSH</li>
+          <li>YAML</li>
+          <li>Python (paramiko, PyYAML, Jinja2, httplib2)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Q&A</h1>
+
+        <p><a href="http://theodorosploumis.com">TheodorosPloumis.com</a></p>
+        <p><a href="http://twitter.com/theoploumis">@theoploumis</a></p>
+      </section>
+
+    </div>
+
+  </div>
+
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.js"></script>
+
+  <script>
+
+  // Full list of configuration options available at:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+
+    transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+    // Optional reveal.js plugins
+    dependencies: [
+      {
+        src: 'lib/js/classList.js', condition: function () {
+          return !document.body.classList;
+        }
+      },
+      {
+        src: 'plugin/markdown/marked.js', condition: function () {
+          return !!document.querySelector('[data-markdown]');
+        }
+      },
+      {
+        src: 'plugin/markdown/markdown.js', condition: function () {
+          return !!document.querySelector('[data-markdown]');
+        }
+      },
+      {
+        src: 'plugin/highlight/highlight.js', async: true, condition: function () {
+          return !!document.querySelector('pre code');
+        }, callback: function () {
+          hljs.initHighlightingOnLoad();
+        }
+      },
+      {src: 'plugin/zoom-js/zoom.js', async: true},
+      {src: 'plugin/notes/notes.js', async: true}
+    ]
+  });
+
+  </script>
+
+</body>
+</html>
