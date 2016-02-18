@@ -18,6 +18,7 @@
 
   <link rel="stylesheet" href="css/reveal.css">
   <link rel="stylesheet" href="css/theme/league.css" id="theme">
+  <link rel="stylesheet" href="css/custom.css" id="theme-extra">
 
   <!-- Code syntax highlighting -->
   <link rel="stylesheet" href="lib/css/zenburn.css">
@@ -67,6 +68,7 @@
             <li>Machines (computers) need some help</li>
             <li>In a semantic environment Machines can understand the meaning of a thing
               (document, port, text, system status etc) and link to/from it.</li>
+            <li>Metadata are a type of semantics</li>
           </ul>
         </section>
 
@@ -102,8 +104,10 @@
         <section>
           <h2>What is Linked Data</h2>
           <ul>
-            <li>Really connected web (2009)</li>
+            <li>Really connected structured web</li>
+            <li><a href="http://tomheath.com/papers/bizer-heath-berners-lee-ijswis-linked-data.pdf">Bizer, Heath and Berners-Lee (2009)</a></li>
             <li>Internet of Things not only of documents</li>
+            <li>Linked Data may noy be Open Data</li>
             <li>Automatic decisions</li>
             <li>Find information faster, easier and with <b>accuracy</b></li>
             <li>The basic 'engine' behind Big Data</li>
@@ -115,94 +119,130 @@
           <h2>The 5th star of the Open Data</h2>
           <img src="http://5stardata.info/images/5-star-steps.png" title="The 5 star open data">
         </section>
-        <aside class="notes">
-★ make your stuff available on the Web (whatever format) under an open license
-★★ make it available as structured data (e.g., Excel instead of image scan of a table)
-★★★ make it available in a non-proprietary open format (e.g., CSV as well as of Excel)
-★★★★ use URIs to denote things, so that people can point at your stuff
-★★★★★ link your data to other data to provide context
-        </aside>
+
+        <section>
+          <h2>Linked data simplified</h2>
+          <p><i>One giant global graph</i></p>
+          <img src="images/linked_data1.png" title="Linked data by Manu Sporny">
+        </section>
 
       </section><!-- change-page -->
 
       <section>
-        <h2>RDF (Statements, R,D,F,URI), Schemas, Graphs, Triples, Endpoints</h2>
-        Several common formats.
+        <h2>Tech behind linked data</h2>
         <ul>
-          <li>One (non-Windows) machine</li>
-          <li>OpenSSH</li>
-          <li>YAML</li>
-          <li>Python (paramiko, PyYAML, Jinja2, httplib2)</li>
+          <li>URI (Uniform Resource Identifier)</li>
+          <li>RDF (Resource Description Framework)</li>
+          <li>http</li>
+          <li>Vocabularies - Ontologies</li>
+          <li>SPARQL</li>
         </ul>
       </section>
 
       <section>
-        <h2>Ontologies (vocabularies, classes, relationships, rdf/owl)</h2>
+        <h2>The 4 principles of Linked Data</h2>
+        <p>Tim Berners-Lee, 2006</p>
         <ul>
-          <li>One (non-Windows) machine</li>
-          <li>OpenSSH</li>
-          <li>YAML</li>
-          <li>Python (paramiko, PyYAML, Jinja2, httplib2)</li>
+          <li>Use <b>URIs</b> to name (identify) things.</li>
+          <li>Use <b>HTTP URIs</b> so that these things can be looked up (interpreted, dereferenced).</li>
+          <li>Provide useful information about what a name identifies when it's looked up, using <b>open standards</b> such as RDF, SPARQL, etc.</li>
+          <li><b>Refer</b> to other things using their HTTP URI-based names when publishing data on the Web.</li>
         </ul>
       </section>
 
       <section>
-        <h2>Linked Data resources</h2>
-        <ul>
-          <li>One (non-Windows) machine</li>
-          <li>OpenSSH</li>
-          <li>YAML</li>
-          <li>Python (paramiko, PyYAML, Jinja2, httplib2)</li>
-        </ul>
-      </section>
+        <section>
+          <h2>RDF</h2>
+          <ul>
+            <li>Provides a generic graph-based data model for describing things, including their relationships with other things</li>
+            <li>W3C specification (1997)</li>
+            <li>Only describes resources</li>
+            <li>It's a data model, a concept not a data format</li>
+            <li>It needs serialization</li>
+            <li>Current version RDF 1.1 (2014) vs 1.0 (2004)</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>The RDF triples</h2>
+          <ul>
+            <li>[subject] [predicate] [object]</li>
+            <li>"John knows Mary"</li>
+            <li>We must state explicitly the nature of the connection</li>
+            <li>2 principal types of RDF triples: <b>Literal Triples</b> and <b>RDF Links</b></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>The RDF Literal triple</h2>
+          <ul>
+            <li>Describe the <b>properties</b> of resources (values)</li>
+            <li>[subject] [predicate] ( string, number, or date )</li>
+            <li>[Drupal] [latest version is] 8.0.3</li>
+          </ul>
+          <pre>
+            http://drupal.org
+            https://schema.org/softwareVersion
+            "8.0.3"
+          </pre>
+        </section>
+
+        <section>
+          <h2>The RDF Links</h2>
+          <ul>
+            <li>Describe the <b>relationship</b> between two resources</li>
+            <li>Can be internal or external (we need the 2nd)</li>
+            <li>[Related resource of Subject] [What is the Relationship] [Related resource of Object]</li>
+          </ul>
+          <pre class="full-width">
+            http://a.com/people/matt
+            http://xmlns.com/foaf/0.1/knows
+            http://b.com/people/dave
+          </pre>
+        </section>
+
+        <section>
+          <h2>The RDF Graph</h2>
+          <ul>
+            <li>A collections of statements about a thing</li>
+            <li>Starting with the same Subject</li>
+            <li>The URIs occurring as subject and object are the nodes in the graph</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Serializing RDF data</h2>
+          <ul>
+            <li>RDF/XML</li>
+            <li>RDFa (<a href="http://manystoriesoneheart.gr/story/bf988052-22a4-402e-bf1d-7b42ef8b79b2">example of a webpage</a>)</li>
+            <li>Turtle</li>
+            <li>N3 (N-Triples)</li>
+            <li>RDF/JSON</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Taxonomies, Vocabularies and Ontologies</h2>
+          <ul>
+            <li>Domain-specific <b>terms</b> for describing classes (groups) of things and how they relate to each other</li>
+            <li>Lightweight ontologies in RDF often referred as vocabularies</li>
+            <li><a href="http://schema.org">Schema.org</a>, SKOS, FoaF, DCMI, SIOC etc</li>
+          </ul>
+        </section>
+
+
+
+      </section><!-- change-page -->
 
       <section>
-        <h2>Producing Linked Data</h2>
+        <h2>SPARQL</h2>
         <ul>
-          <li>One (non-Windows) machine</li>
-          <li>OpenSSH</li>
-          <li>YAML</li>
-          <li>Python (paramiko, PyYAML, Jinja2, httplib2)</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Consuming Linked Data</h2>
-        <ul>
-          <li>One (non-Windows) machine</li>
-          <li>OpenSSH</li>
-          <li>YAML</li>
-          <li>Python (paramiko, PyYAML, Jinja2, httplib2)</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>The SPARQL language, examples, syntax</h2>
-        <ul>
-          <li>One (non-Windows) machine</li>
-          <li>OpenSSH</li>
-          <li>YAML</li>
-          <li>Python (paramiko, PyYAML, Jinja2, httplib2)</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Linked data APIs vs RDF (json-ld etc)</h2>
-        <ul>
-          <li>One (non-Windows) machine</li>
-          <li>OpenSSH</li>
-          <li>YAML</li>
-          <li>Python (paramiko, PyYAML, Jinja2, httplib2)</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Business with Open and Linked data</h2>
-        <ul>
-          <li>One (non-Windows) machine</li>
-          <li>OpenSSH</li>
-          <li>YAML</li>
-          <li>Python (paramiko, PyYAML, Jinja2, httplib2)</li>
+          <li>The query language for RDF</li>
+          <li>Similar to SQL</li>
+          <li>Fast and secure</li>
+          <li>Endpoints and wrappers</li>
+          <li>Apache Jena, Virtuoso, 4Store, Dydra</li>
+          <li><a href="http://www.learningsparql.com/2ndeditionexamples/">Some examples</a></li>
         </ul>
       </section>
 
@@ -220,12 +260,13 @@
       </section>
 
       <section>
-        <h2>Big Data and the future</h2>
+        <h2>The (linked) future</h2>
         <ul>
-          <li>One (non-Windows) machine</li>
-          <li>OpenSSH</li>
-          <li>YAML</li>
-          <li>Python (paramiko, PyYAML, Jinja2, httplib2)</li>
+          <li><a href="http://json-ld.org/playground/">Json-LD</a></li>
+          <li><a href="https://web-payments.org">Web payments</a></li>
+          <li><a href="http://opencreds.org/">Open Credentials</a></li>
+          <li>Graph databases (eg Neo4J)</li>
+          <li>Personal answer machines</li>
         </ul>
       </section>
 
