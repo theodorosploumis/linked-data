@@ -92,8 +92,12 @@
         <section>
           <h2>What should Machines read</h2>
           <pre>
+            -> Event description starts
+
             Word word <a href="#">Link of a City</a> word word word word <a href="#">Link of a Place</a>
             word <a href="#">link of a Date</a> word <a href="#">link of a 24h Time</a>.
+
+            -> Event description ends
           </pre>
         </section>
 
@@ -124,6 +128,7 @@
           <h2>Linked data simplified</h2>
           <p><i>One giant global graph</i></p>
           <img src="images/linked_data1.png" title="Linked data by Manu Sporny">
+          <small><a href="https://youtu.be/4x_xzT5eF5Q?t=7m4s">Source</a> by <a href="https://twitter.com/manusporny">Manu Sporny</a></small>
         </section>
 
       </section><!-- change-page -->
@@ -183,7 +188,7 @@
           <pre>
             http://drupal.org
             https://schema.org/softwareVersion
-            "8.0.3"
+            "8.2.0"
           </pre>
         </section>
 
@@ -202,6 +207,15 @@
         </section>
 
         <section>
+          <h2>The RDF Anatomy</h2>
+          <ul>
+            <li>[subject]: <a href="https://www.wikiwand.com/en/Uniform_Resource_Identifier">URI</a>, <a href="https://www.wikiwand.com/en/Blank_node">Blank_node</a> (bnode)</li>
+            <li>[predicate]: URI</li>
+            <li>[object]: URI, Blank_node, <a href="">Literal</a></li>
+          </ul>
+        </section>
+
+        <section>
           <h2>The RDF Graph</h2>
           <ul>
             <li>A collections of statements about a thing</li>
@@ -211,13 +225,14 @@
         </section>
 
         <section>
-          <h2>Serializing RDF data</h2>
+          <h2><a href="https://www.wikiwand.com/en/Serialization">Serializing</a> RDF data</h2>
           <ul>
-            <li>RDF/XML</li>
-            <li>RDFa (<a href="http://manystoriesoneheart.gr/story/bf988052-22a4-402e-bf1d-7b42ef8b79b2">example of a webpage</a>)</li>
-            <li>Turtle</li>
-            <li>N3 (N-Triples)</li>
-            <li>RDF/JSON</li>
+            <li><a href="https://www.wikiwand.com/en/RDF/XML">RDF/XML</a> (<a href="https://www.w3.org/2000/10/swap/test/meet/blue.rdf">.rdf</a>)</li>
+            <li><a href="https://www.wikiwand.com/en/RDFa">RDFa</a> (<a href="http://manystoriesoneheart.gr/story/bf988052-22a4-402e-bf1d-7b42ef8b79b2">example of a webpage</a>)</li>
+            <li><a href="https://www.wikiwand.com/en/Turtle_(syntax)">Turtle</a> (<a href="https://www.w3.org/TeamSubmission/turtle/tests/test-30.ttl">.ttl</a>)</li>
+            <li><a href="https://www.wikiwand.com/en/Notation3">N3, Notation 3</a> (<a href="https://www.w3.org/2000/10/swap/test/meet/blue.n3">.n3</a>)</li>
+            <li><a href="https://www.wikiwand.com/en/N-Triples">N-Triples</a> (<a href="http://blog.datagraph.org/2010/03/grepping-ntriples/drupal.nt">.nt</a>)</li>
+            <li><a href="https://www.w3.org/TR/rdf-json/">RDF/JSON</a> (<a href="http://json-ld.org/contexts/person.jsonld">.jsonld</a>)</li>
           </ul>
         </section>
 
@@ -226,34 +241,64 @@
           <ul>
             <li>Domain-specific <b>terms</b> for describing classes (groups) of things and how they relate to each other</li>
             <li>Lightweight ontologies in RDF often referred as vocabularies</li>
+            <li>They borrow classes/properties from each other</li>
             <li><a href="http://schema.org">Schema.org</a>, SKOS, FoaF, DCMI, SIOC etc</li>
           </ul>
         </section>
 
-
-
       </section><!-- change-page -->
 
       <section>
-        <h2>SPARQL</h2>
-        <ul>
-          <li>The query language for RDF</li>
-          <li>Similar to SQL</li>
-          <li>Fast and secure</li>
-          <li>Endpoints and wrappers</li>
-          <li>Apache Jena, Virtuoso, 4Store, Dydra</li>
-          <li><a href="http://www.learningsparql.com/2ndeditionexamples/">Some examples</a></li>
-        </ul>
+        <section>
+          <h2>SPARQL</h2>
+          <ul>
+            <li>'Default' query language for RDF (there are <a href="https://www.wikiwand.com/en/RDF_query_language">many others</a>)</li>
+            <li>Similar to SQL</li>
+            <li>Fast and secure</li>
+            <li>Endpoints, frontends, wrappers</li>
+            <li>Apache Jena, Virtuoso, 4Store, Dydra</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>SPARQL - Syntax</h2>
+          <pre>
+    # prefix declarations
+    PREFIX foo: <http://example.com/resources/>
+    ...
+    # dataset definition
+    FROM ...
+    # result clause
+    SELECT ...
+    # query pattern
+    WHERE {
+        ...
+    }
+    # query modifiers
+    ORDER BY ...
+          </pre>
+        </section>
+
+        <section>
+          <h2>SPARQL - Examples</h2>
+          <ul>
+            <li><a href="https://query.wikidata.org/">query.wikidata.org</a></li>
+            <li><a href="http://europeana.ontotext.com/sparql/queries#Queries_for_the_main_resources_in_Europeana">Europeana</a></li>
+            <li><a href="http://www.s3space.com/">s3space.com</a></li>
+            <li><a href="http://www.learningsparql.com/2ndeditionexamples/">learningsparql.com</a></li>
+            <li><a href="http://rdf.myexperiment.org/howtosparql?page=Using%20the%20SPARQL%20Endpoint">rdf.myexperiment.org</a></li>
+          </ul>
+        </section>
+
       </section>
 
       <section>
         <h2>The problems of Linked Data</h2>
         <ul>
-          <li>Which schema and ontology to use</li>
-          <li>How to connect (specification)</li>
-          <li>Need for powerful machines</li>
+          <li>Confusion of standarization (see w3c)</li>
           <li>Hard for developers to understand</li>
-          <li>Confusion of standarization from the w3c</li>
+          <li>Which schema and ontology to use</li>
+          <li>Need for powerful/special software</li>
           <li>Missing metadata for the datasets</li>
           <li>Quality and accuracy of the data</li>
         </ul>
@@ -266,8 +311,26 @@
           <li><a href="https://web-payments.org">Web payments</a></li>
           <li><a href="http://opencreds.org/">Open Credentials</a></li>
           <li>Graph databases (eg Neo4J)</li>
+          <li>Open RESTful APIs</li>
           <li>Personal answer machines</li>
         </ul>
+      </section>
+
+      <section>
+        <h2>Follow them</h2>
+        <ul>
+          <li><a href="https://twitter.com/timberners_lee">@timberners_lee</a></li>
+          <li><a href="https://twitter.com/manusporny">@manusporny</a></li>
+          <li><a href="https://twitter.com/linclark">@linclark</a></li>
+          <li><a href="https://twitter.com/Gkellogg">@Gkellogg</a></li>
+          <li><a href="https://twitter.com/bblfish">@bblfish</a></li>
+          <li><a href="https://twitter.com/dajobe">@dajobe</a></li>
+        </ul>
+        <p>
+          <ul>
+            <li><a href="http://www.wikicfp.com/cfp/call?conference=linked%20data">Linked Data Conferences</a></li>
+          </ul>
+        </p>
       </section>
 
       <section>
