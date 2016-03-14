@@ -76,8 +76,8 @@
           <h2>What do Humans read</h2>
           <pre>
             Drupal meetup <a href="#">Thessaloniki</a> will take place
-            in <a href="#">Techministry</a> at <a href="#">Thursday 18 February 2016</a>
-            from <a href="#">20:00 to 22:00</a>.
+            in <a href="#">Techministry</a> at <a href="#">Wednesday 16 March 2016</a>
+            from <a href="#">19:00 to 21:00</a>.
           </pre>
         </section>
 
@@ -174,6 +174,7 @@
             <li>[subject] [predicate] [object]</li>
             <li>"John knows Mary"</li>
             <li>We must state explicitly the nature of the connection</li>
+            <li>We can download ar query triples</li>
             <li>2 principal types of RDF triples: <b>Literal Triples</b> and <b>RDF Links</b></li>
           </ul>
         </section>
@@ -182,14 +183,14 @@
           <h2>The RDF Literal triple</h2>
           <ul>
             <li>Describe the <b>properties</b> of resources (values)</li>
-            <li>[subject] [predicate] ( string, number, or date )</li>
-            <li>[Drupal] [latest version is] 8.0.3</li>
+            <li>[Subject] [Predicate] ( string, number or date )</li>
+            <li>[Drupal] [latest version is] "8.0.5"</li>
           </ul>
-          <pre>
+          <pre><code>
             http://drupal.org
             https://schema.org/softwareVersion
-            "8.2.0"
-          </pre>
+            "8.0.5"
+          </code></pre>
         </section>
 
         <section>
@@ -197,13 +198,13 @@
           <ul>
             <li>Describe the <b>relationship</b> between two resources</li>
             <li>Can be internal or external (we need the 2nd)</li>
-            <li>[Related resource of Subject] [What is the Relationship] [Related resource of Object]</li>
+            <li>[Subject] [What is the Relationship with] [Object]</li>
           </ul>
-          <pre class="full-width">
+          <pre><code>
             http://a.com/people/matt
             http://xmlns.com/foaf/0.1/knows
             http://b.com/people/dave
-          </pre>
+          </code></pre>
         </section>
 
         <section>
@@ -211,9 +212,93 @@
           <ul>
             <li>[subject]: <a href="https://www.wikiwand.com/en/Uniform_Resource_Identifier">URI</a>, <a href="https://www.wikiwand.com/en/Blank_node">Blank_node</a> (bnode)</li>
             <li>[predicate]: URI</li>
-            <li>[object]: URI, Blank_node, <a href="">Literal</a></li>
+            <li>[object]: URI, Blank_node, <a href="https://www.w3.org/TR/rdf11-concepts/#section-Graph-Literal">Literal</a></li>
           </ul>
         </section>
+
+        <section>
+          <h2>RDF - URI</h2>
+          <pre><code>
+      Absolute IRI which may include a # fragment.
+      &lt;http://www.example.org/&gt;
+      &lt;http://www.example.org/#fragment&gt;
+
+      Relative IRI resolved against base IRI.
+      &lt;abc.rdf&gt;
+
+      Base IRI, usually the query document IRI
+      &lt;&gt;
+
+      IRI shorthand using XML-style prefix ex and local name.
+      Declared with PREFIX (SPARQL) or @prefix (Turtle)
+      ex:name
+    </code></pre>
+        </section>
+
+        <section>
+          <h2>RDF - Literal</h2>
+          <pre><code>
+      A Unicode string with an optional language tag.
+      "hello"
+      "bonjour"@fr
+      "1234"
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>RDF - Typed Literal</h2>
+          <small>Literals with an <a href="https://www.w3.org/TR/rdf11-concepts/#xsd-datatypes">XML schema datatype</a></small>
+          <pre><code>
+      A Unicode string and datatype IRI for encoding datatypes.
+      "1234"^^&lt;https://www.w3.org/2001/XMLSchema#string&gt;
+
+      Abbreviated with an XML QName style as:
+      "1234"^^xsd:string
+
+      Short forms for several common datatypes:
+      -10
+
+      "-10"^^xsd:integer
+
+      1.2345
+      "1.2345"^^xsd:decimal
+
+      true
+      "true"^^xsd:boolean
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>RDF - Namespaces and Prefixes</h2>
+          <table class="small-size">
+            <tbody>
+            <tr>
+              <th>Namespace</th><th>Prefix</th><th>Namespace URI</th>
+            </tr>
+            <tr>
+              <td>RDF</td><td>rdf:</td><td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
+            </tr>
+            <tr>
+              <td>Dublin Core</td><td>dc:</td><td>http://purl.org/dc/elements/1.1/</td>
+            </tr>
+            <tr>
+              <td>FOAF</td><td>foaf:</td><td>http://xmlns.com/foaf/0.1/</td>
+            </tr>
+            <tr>
+              <td>XML Schema Datatypes</td><td>xsd:</td><td>http://www.w3.org/2001/XMLSchema#</td>
+            </tr>
+            <tr>
+              <td>RDFS</td><td>rdfs:</td><td>http://www.w3.org/2000/01/rdf-schema#</td>
+            </tr>
+            <tr>
+              <td>OWL</td><td>owl:</td><td>http://www.w3.org/2002/07/owl#</td>
+            </tr>
+          </tbody>
+          </table>
+          <p>Find prefixes at <a href="http://prefix.cc/">prefix.cc</a></p>
+        </section>
+
+
 
         <section>
           <h2>The RDF Graph</h2>
@@ -221,6 +306,8 @@
             <li>A collections of statements about a thing</li>
             <li>Starting with the same Subject</li>
             <li>The URIs occurring as subject and object are the nodes in the graph</li>
+            <li>A <a href="http://manystoriesoneheart.gr/sparql?query=SELECT+%3Fs+%3Fp+%3Fo%0D%0A%0D%0AWHERE+%7B%0D%0A++%7B+%3Fs+%3Fp+%3Fo+.+%7D%0D%0Afilter%28%3Fs+%3D%3Chttp%3A%2F%2Fmanystoriesoneheart.gr%2Fstory%2Fbf988052-22a4-402e-bf1d-7b42ef8b79b2%3E%29%0D%0A%7D%0D%0ALIMIT+200&output=htmltab&jsonp=&key=">real example</a>
+              of a <a href="http://manystoriesoneheart.gr/story/bf988052-22a4-402e-bf1d-7b42ef8b79b2">webpage</a></li>
           </ul>
         </section>
 
@@ -228,12 +315,15 @@
           <h2><a href="https://www.wikiwand.com/en/Serialization">Serializing</a> RDF data</h2>
           <ul>
             <li><a href="https://www.wikiwand.com/en/RDF/XML">RDF/XML</a> (<a href="https://www.w3.org/2000/10/swap/test/meet/blue.rdf">.rdf</a>)</li>
-            <li><a href="https://www.wikiwand.com/en/RDFa">RDFa</a> (<a href="http://manystoriesoneheart.gr/story/bf988052-22a4-402e-bf1d-7b42ef8b79b2">example of a webpage</a>)</li>
+            <li><a href="https://www.wikiwand.com/en/RDFa">RDFa</a></li>
             <li><a href="https://www.wikiwand.com/en/Turtle_(syntax)">Turtle</a> (<a href="https://www.w3.org/TeamSubmission/turtle/tests/test-30.ttl">.ttl</a>)</li>
             <li><a href="https://www.wikiwand.com/en/Notation3">N3, Notation 3</a> (<a href="https://www.w3.org/2000/10/swap/test/meet/blue.n3">.n3</a>)</li>
             <li><a href="https://www.wikiwand.com/en/N-Triples">N-Triples</a> (<a href="http://blog.datagraph.org/2010/03/grepping-ntriples/drupal.nt">.nt</a>)</li>
             <li><a href="https://www.w3.org/TR/rdf-json/">RDF/JSON</a> (<a href="http://json-ld.org/contexts/person.jsonld">.jsonld</a>)</li>
           </ul>
+          <p>Example RDFa: <a href="http://rdfa.info/play/">demos</a>,
+            <a href="http://manystoriesoneheart.gr/story/f5ae171c-a40d-4b34-a891-f7b4a7d6ccb3">real webpage</a>,
+            <a href="http://linter.structured-data.org/?url=http:%2F%2Fmanystoriesoneheart.gr%2Fstory%2Ff5ae171c-a40d-4b34-a891-f7b4a7d6ccb3">webpage parsed</a></p>
         </section>
 
         <section>
@@ -242,7 +332,13 @@
             <li>Domain-specific <b>terms</b> for describing classes (groups) of things and how they relate to each other</li>
             <li>Lightweight ontologies in RDF often referred as vocabularies</li>
             <li>They borrow classes/properties from each other</li>
-            <li><a href="http://schema.org">Schema.org</a>, SKOS, FoaF, DCMI, SIOC etc</li>
+            <li>We can create our own, extend or reuse ontologies</li>
+            <li>Popular: <a href="http://schema.org">Schema.org</a>,
+              <a href="https://www.w3.org/TR/2008/WD-skos-reference-20080829/skos.html" title="Simple Knowledge Organization System RDF Schema">SKOS</a>,
+              <a href="http://www.foaf-project.org/" title="Friend of a Friend">FoaF</a>,
+              <a href="http://dublincore.org/documents/2012/06/14/dcmi-terms/" title="Dublin Core Metadata Initiative">DCMI</a>,
+              <a href="https://www.w3.org/Submission/sioc-spec/" title="Semantically-Interlinked Online Communities">SIOC</a> etc</li>
+            <li>Overview of Linked Open Vocabularies at <a href="http://lov.okfn.org/dataset/lov/">LOV</a></li>
           </ul>
         </section>
 
@@ -250,44 +346,131 @@
 
       <section>
         <section>
-          <h2>SPARQL</h2>
+          <h2>SPARQL <a href="https://www.w3.org/TR/sparql11-overview/">1.1</a> (2013)</h2>
           <ul>
             <li>'Default' query language for RDF (there are <a href="https://www.wikiwand.com/en/RDF_query_language">many others</a>)</li>
             <li>Similar to SQL</li>
             <li>Fast and secure</li>
             <li>Endpoints, frontends, wrappers</li>
-            <li>Apache Jena, Virtuoso, 4Store, Dydra</li>
+            <li><a href="https://jena.apache.org/" title="Java framework for building Semantic Web and Linked Data applications.">Apache Jena</a>,
+              <a href="http://virtuoso.openlinksw.com/dataspace/doc/dav/wiki/Main/" title="Enterprise or Open Source solution for data access, integration and relational database management">Virtuoso</a>,
+              <a href="http://marmotta.apache.org/" title="Open Platform for Linked Data">Marmotta</a>,
+              <a href="http://dydra.com/" title="Cloud-based RDF store, a database-as-a-service">Dydra</a>
+              and <a href="https://www.w3.org/2001/sw/wiki/SPARQL">many others</a></li>
+            <li>Can Combine several endpoints (<a href="https://www.w3.org/TR/sparql11-federated-query/">federated query</a>)</li>
+            <li>Can Update RDF Graph stores (<a href="https://www.w3.org/TR/sparql11-update/">Update query</a>)</li>
           </ul>
         </section>
 
         <section>
-          <h2>SPARQL - Syntax</h2>
-          <pre>
+          <h2>SPARQL - Reference synopsis</h2>
+          <table class="small-size">
+            <tbody>
+            <tr>
+              <th>Patterns</th>
+              <th>Modifiers</th>
+              <th>Query Forms</th>
+            </tr>
+            <tr>
+              <td>RDF terms</td>
+              <td>DISTINCT</td>
+              <td>SELECT</td>
+            </tr>
+            <tr>
+              <td>triple patterns</td>
+              <td>REDUCED</td>
+              <td>CONSTRUCT</td>
+            </tr>
+            <tr>
+              <td>Basic graph patterns</td>
+              <td>PROJECT</td>
+              <td>DESCRIBE</td>
+            </tr>
+            <tr>
+              <td>Groups</td>
+              <td>ORDER BY</td>
+              <td>ASK</td>
+            </tr>
+            <tr>
+              <td>OPTIONAL</td>
+              <td>LIMIT</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>UNION</td>
+              <td>OFFSET</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>GRAPH</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>FILTER</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section>
+          <h2>SPARQL - Common Syntax</h2>
+          <pre><code>
     # prefix declarations
-    PREFIX foo: <http://example.com/resources/>
+    PREFIX foo: &lt;http://example.com/resources/&gt;
     ...
     # dataset definition
     FROM ...
     # result clause
-    SELECT ...
+    SELECT ... ?variables
     # query pattern
     WHERE {
-        ...
+        ... ?variables
     }
     # query modifiers
     ORDER BY ...
-          </pre>
+    LIMIT n OFFSET m
+          </code></pre>
         </section>
 
         <section>
           <h2>SPARQL - Examples</h2>
           <ul>
             <li><a href="https://query.wikidata.org/">query.wikidata.org</a></li>
+            <li><a href="https://open-data.europa.eu/en/linked-data">open-data.europa.eu/en/linked-data</a></li>
+            <li><a href="http://www.s3space.com/">s3space.com</a></li>
             <li><a href="http://rdf.myexperiment.org/howtosparql?page=Using%20the%20SPARQL%20Endpoint">rdf.myexperiment.org</a></li>
           </ul>
         </section>
 
-      </section>
+        <section>
+          <h2>SPARQL - Tips</h2>
+          <ul>
+            <li>Same results can be achived with different queries</li>
+            <li>More accurate queries are faster</li>
+            <li>Prefer Group Graph patterns instead of FILTER</li>
+            <li>Avoid SELECT *</li>
+            <li>Avoid ORDER BY</li>
+            <li>Avoid DISTINCT (use REDUCED)</li>
+            <li>Use OFFSET, LIMIT to paginate results</li>
+            <li>Variables are case insensitive</li>
+            <li>Variables cannot change name on the same query</li>
+            <li>Variables can start with <b>?</b> or <b>$</b></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>SPARQL - Cheatsheets</h2>
+          <ul>
+            <li><a href="http://ebiquity.umbc.edu/_file_directory_/resources/97.pdf">Semantic Web Reference Card v2.0</a></li>
+            <li><a href="https://www.dajobe.org/2005/04-sparql/SPARQLreference-1.8-us.pdf">SPARQL RDF Query Language Reference v1.8</a></li>
+            <li><a href="https://blogs.msdn.com/cfs-filesystemfile.ashx/__key/communityserver-components-postattachments/00-05-46-41-25/SPARQL-Cheat-Sheet.pdf">SPARQL PROTOCOL AND RDF QUERY LANGUAGE</a></li>
+          </ul>
+        </section>
+
+      </section><!-- end of page -->
 
       <section>
         <h2>The problems of Linked Data</h2>
@@ -297,6 +480,7 @@
           <li>Which schema and ontology to use</li>
           <li>Need for powerful/special software</li>
           <li>Missing metadata for the datasets</li>
+          <li>Cannot really rely on endpoints (see <a href="http://sparqles.ai.wu.ac.at/">SPARQL endpoint status from Datahub.io linked datasets</a>)</li>
           <li>Quality and accuracy of the data</li>
         </ul>
       </section>
@@ -308,8 +492,9 @@
           <li><a href="https://web-payments.org">Web payments</a></li>
           <li><a href="http://opencreds.org/">Open Credentials</a></li>
           <li>Graph databases (eg Neo4J)</li>
-          <li>Open RESTful APIs</li>
+          <li>Semantic RESTful APIs</li>
           <li>Personal answer machines</li>
+          <li>Kownledge decentralization</li>
         </ul>
       </section>
 

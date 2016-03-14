@@ -6,5 +6,10 @@
 }
 
 .reveal pre {
-  padding-top: 1em;
+
+}
+
+.reveal table.small-size {
+  font-size: 0.8em;
+  white-space: nowrap;
 }
