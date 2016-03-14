@@ -75,29 +75,38 @@
         <section>
           <h2>What do Humans read</h2>
           <pre>
+
             Drupal meetup <a href="#">Thessaloniki</a> will take place
-            in <a href="#">Techministry</a> at <a href="#">Wednesday 16 March 2016</a>
+            in <a href="#">Techministry</a>
+            at <a href="#">Wednesday 16 March 2016</a>
             from <a href="#">19:00 to 21:00</a>.
+
           </pre>
         </section>
 
         <section>
           <h2>What do Machines read</h2>
           <pre>
-            Word word <a href="#">link</a> word word word word <a href="#">link</a>
-            word <a href="#">link</a> word <a href="#">link</a>.
+
+            Word word <a href="#">link</a> word word word
+            word <a href="#">link</a>
+            word <a href="#">link</a>
+            word <a href="#">link</a>.
+
           </pre>
         </section>
 
         <section>
           <h2>What should Machines read</h2>
           <pre>
-            -> Event description starts
 
-            Word word <a href="#">Link of a City</a> word word word word <a href="#">Link of a Place</a>
-            word <a href="#">link of a Date</a> word <a href="#">link of a 24h Time</a>.
+    -> Event description with url <a href="http://mydrupal.gr/node/2881/">http://mydrupal.gr/node/2881</a>
 
-            -> Event description ends
+    Word word <a href="#">Link of a City</a> word word word
+    word <a href="#">Link of a Place</a>
+    word <a href="#">link of a Date</a>
+    word <a href="#">link of a 24h Time</a>.
+
           </pre>
         </section>
 
@@ -111,7 +120,7 @@
             <li>Really connected structured web</li>
             <li><a href="http://tomheath.com/papers/bizer-heath-berners-lee-ijswis-linked-data.pdf">Bizer, Heath and Berners-Lee (2009)</a></li>
             <li>Internet of Things not only of documents</li>
-            <li>Linked Data may noy be Open Data</li>
+            <li>Linked Data may not be Open Data</li>
             <li>Automatic decisions</li>
             <li>Find information faster, easier and with <b>accuracy</b></li>
             <li>The basic 'engine' behind Big Data</li>
@@ -148,10 +157,10 @@
         <h2>The 4 principles of Linked Data</h2>
         <p>Tim Berners-Lee, 2006</p>
         <ul>
-          <li>Use <b>URIs</b> to name (identify) things.</li>
-          <li>Use <b>HTTP URIs</b> so that these things can be looked up (interpreted, dereferenced).</li>
-          <li>Provide useful information about what a name identifies when it's looked up, using <b>open standards</b> such as RDF, SPARQL, etc.</li>
-          <li><b>Refer</b> to other things using their HTTP URI-based names when publishing data on the Web.</li>
+          <li>Use <b>URIs</b> to name (identify) things</li>
+          <li>Use <b>HTTP URIs</b> so that these things can be looked up (interpreted, dereferenced)</li>
+          <li>Provide useful information about what a <b>name</b> identifies when it's looked up, using <b>open standards</b> such as RDF, SPARQL etc</li>
+          <li><b>Refer</b> to other things using their HTTP URI-based names when publishing data on the Web</li>
         </ul>
       </section>
 
@@ -159,12 +168,13 @@
         <section>
           <h2>RDF</h2>
           <ul>
-            <li>Provides a generic graph-based data model for describing things, including their relationships with other things</li>
+            <li>A graph data model for describing things</li>
+            <li>Describe the relationships between things</li>
             <li>W3C specification (1997)</li>
             <li>Only describes resources</li>
             <li>It's a data model, a concept not a data format</li>
             <li>It needs serialization</li>
-            <li>Current version RDF 1.1 (2014) vs 1.0 (2004)</li>
+            <li>Current version RDF 1.1 (2014) after 1.0 (2004)</li>
           </ul>
         </section>
 
@@ -175,36 +185,8 @@
             <li>"John knows Mary"</li>
             <li>We must state explicitly the nature of the connection</li>
             <li>We can download ar query triples</li>
-            <li>2 principal types of RDF triples: <b>Literal Triples</b> and <b>RDF Links</b></li>
+            <li>Types of RDF triples: <b>Literal Triples</b> and <b>RDF Links</b></li>
           </ul>
-        </section>
-
-        <section>
-          <h2>The RDF Literal triple</h2>
-          <ul>
-            <li>Describe the <b>properties</b> of resources (values)</li>
-            <li>[Subject] [Predicate] ( string, number or date )</li>
-            <li>[Drupal] [latest version is] "8.0.5"</li>
-          </ul>
-          <pre><code>
-            http://drupal.org
-            https://schema.org/softwareVersion
-            "8.0.5"
-          </code></pre>
-        </section>
-
-        <section>
-          <h2>The RDF Links</h2>
-          <ul>
-            <li>Describe the <b>relationship</b> between two resources</li>
-            <li>Can be internal or external (we need the 2nd)</li>
-            <li>[Subject] [What is the Relationship with] [Object]</li>
-          </ul>
-          <pre><code>
-            http://a.com/people/matt
-            http://xmlns.com/foaf/0.1/knows
-            http://b.com/people/dave
-          </code></pre>
         </section>
 
         <section>
